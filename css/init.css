@@ -101,6 +101,9 @@ h1, h2{
     cursor: pointer;
     margin-top: 15px;
   }
+  .save:active{
+    background-color: #6361c9 !important;
+  }
   .add_lang{
     position: relative;
     width: 100%;

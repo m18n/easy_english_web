@@ -4,8 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/public/css/main.css">
 </head>
-<body>
-    <h1>MAIN</h1>
+<body style="font-family: 'Roboto', sans-serif;">
+    <div class="container">
+        <div class="menu_side none">
+            Test
+        </div>
+        <div class="header">
+            <h1>Easy English</h1>
+            <img src="/public/img/Hamburger_icon.svg.png" alt="" class="open_menu" onclick="open_menu()">
+        </div>
+        <div class="content">
+            <div class="add_word_block">
+                <textarea id="w3review" name="w3review"  placeholder="Слово або фраза"></textarea>
+                <textarea id="w3review" name="w3review"  placeholder="Контекст де використовується фраза."></textarea>
+                <div class="add_word_button">Додати</div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="/public/js/jquery-3.6.0.min.js"></script>
+    <script src="/public/js/main.js"></script>
 </body>
 </html>

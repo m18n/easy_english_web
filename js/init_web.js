@@ -1,3 +1,10 @@
+function add_lang(){
+  let select=$('.select_base').clone();
+        $(select).removeClass("none");
+        $(select).removeClass("select_base");
+        $(select).addClass("dropdown_lang")
+        $(select).appendTo('.langs');
+}
 $(document).ready(function() {
     // Обробник кліка для відкриття/закриття випадаючого списку
     // $('.dropdown-select').click(function() {
@@ -10,11 +17,9 @@ $(document).ready(function() {
     //   $('.dropdown-select span').attr("value",$(this).attr("value"));
     //   $('.dropdown-list').hide();
     // });
+    add_lang();
     $('.add_lang').click(function() {
-        let select=$('.select_base').clone();
-        $(select).removeClass("none");
-        $(select).removeClass("select_base");
-        $(select).appendTo('.langs');
+        add_lang();
       });
   });
   function select(element){

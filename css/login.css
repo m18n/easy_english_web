@@ -40,7 +40,7 @@
     height: 62px;
     color:white;
     background-color: #827ffe;
-    border: none;
+    border:none;
     border-radius: 3px;
     font-size: 17px;
     letter-spacing: 0.07em;
@@ -54,6 +54,9 @@
    
    
     animation: fadeOutShadow 2s ease; /* Анімація для зникнення тіні */
+}
+.submit:active{
+   background-color: #6361c9 !important;
 }
 
 /* Ключова анімація для зникнення тіні */

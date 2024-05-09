@@ -13,7 +13,11 @@ function auth(){
         data: formData,
         success: function(data){
             if(data.hasOwnProperty("error")){
+                if(data["error"]==true){
                 document.location.href = '/settings/error';
+                }else{
+                    document.location.href = '/view/login';
+                }
             }else{
                 if(data["status"]==true){
                     document.location.href = '/view/userspace/main';
@@ -25,6 +29,47 @@ function auth(){
                         $('.password').removeClass('wrong_auth_info');
                     }, 1500); 
                 }
+            }
+        },
+        dataType: "json",
+        contentType : "application/json"
+    });
+}
+function save_dictionaries(){
+    var divArray = [];
+
+    // Використовуємо jQuery для вибору всіх елементів з класом "exampleClass" і додавання їх до масиву
+    $(".dropdown_lang").each(function() {
+        divArray.push($(this));
+    });
+    var dictionaries_array=[];
+    divArray.forEach(function(divElement) {
+        // Знаходимо елементи з класом ".selection" всередині поточного divElement
+        var dictionary_info = divElement.find(".dictionary_info");
+        dictionaries_array.push(parseInt($(dictionary_info).attr("value")));
+        // Тепер в selectionElements ви маєте масив з усіма елементами з класом ".selection",
+        // які є дочірніми елементами поточного divElement
+    });
+    var dictionaries = {
+        dictionaries_id:dictionaries_array
+    };
+    let formData=JSON.stringify(dictionaries);
+    console.log(formData+"\n");
+    $.ajax({
+        type: "POST",
+        url: "/api/userstart/setdictionaries",
+        data: formData,
+        success: function(data){
+            if(data.hasOwnProperty("error")){
+                if(data["error"]==true){
+                document.location.href = '/settings/error';
+                }else{
+                    document.location.href = '/view/login';
+                }
+            }else{
+              
+                document.location.href = '/view/userspace/main';
+                
             }
         },
         dataType: "json",

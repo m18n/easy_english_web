@@ -13,7 +13,7 @@
 <body style="font-family: 'Roboto', sans-serif;">
     <div  class="dropdown select_lang select_base none">
         <div class="dropdown-select" onclick="select(this);">
-          <span>Оберіть мову</span>
+          <span class="dictionary_info">Оберіть мову</span>
           <i class="arrow down"></i>
         </div>
         <ul class="dropdown-list">
@@ -29,19 +29,8 @@
         <div class="init_dictionary">
             <h2>Які мови ти хочеш вчити?</h2>
             <div class="langs">
-                <div class="dropdown select_lang">
-                    <div class="dropdown-select" onclick="select(this);">
-                        <span>Оберіть мову</span>
-                        <i class="arrow down"></i>
-                        </div>
-                        <ul class="dropdown-list">
-                            {{#languages}}
-                            <li value="{{id}}" onclick="select_option(this);">{{language_name}}</li>
-                            {{/languages}}
-
-                        
-                        </ul>
-                </div>
+               <!--dropdown here--> 
+                
             </div>
             <div class="add_lang">
                 <div class="space_add">
@@ -52,7 +41,7 @@
                 </div>
                 
             </div>
-            <div class="save">
+            <div class="save" onclick="save_dictionaries()">
                 Зберегти
             </div>
         </div>
