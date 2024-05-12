@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/public/css/main.css">
+<link rel="stylesheet" href="/public/css/menu.css">
 </head>
 <body style="font-family: 'Roboto', sans-serif;">
     <div class="container">
@@ -32,10 +33,16 @@
                         </ul>
                     </div>
                 </div>
+
+                <a href="/view/userspace/translate/main" class="a menu_item">
+                    Translate
+                    <div class="hr"></div>
+                </a>
+                
             </div>
         </div>
         <div class="header">
-            <h1>Easy <span style="color: #827ffe;">{{current_lang}}</span></h1>
+            <a href="/view/userspace/learn/main" class="a"><h1>Easy <span style="color: #827ffe;">{{current_lang}}</span></h1></a>
             <img src="/public/img/Hamburger_icon.svg.png" alt="" class="open_menu" onclick="open_menu()">
         </div>
         <div class="content">
@@ -52,5 +59,6 @@
     <script src="/public/js/drop_down.js"></script>
     <script src="/public/js/post.js"></script>
     <script src="/public/js/main.js"></script>
+    <script src="/public/js/menu.js"></script>
 </body>
 </html>

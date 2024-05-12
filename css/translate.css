@@ -1,0 +1,13 @@
+.content textarea{
+    
+    height: 200px;
+    margin-bottom: 20px;
+}
+.translate_block{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.trans{
+    margin-bottom: 10px;
+}
