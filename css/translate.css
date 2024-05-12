@@ -1,13 +1,80 @@
 .content textarea{
-    
+    display: flex;
+    flex-direction: column;
     height: 200px;
     margin-bottom: 20px;
+}
+.content{
+    display: flex;
+    align-items: center;
 }
 .translate_block{
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 50%;
 }
 .trans{
     margin-bottom: 10px;
+}
+.trans span{
+    color:grey;
+}
+.change_arrow{
+    width: 30px;
+    height: 40px;
+    cursor: pointer;
+}
+.translate_button{
+    display: flex;
+    margin:0px;
+    border:none;
+    align-self: flex-end;
+    background-color: #827ffe;
+    color:white;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.translate_button:active{
+    background-color: #6361c9 !important;
+}
+.choose_language{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.drop_lang{
+    width: 30%;
+}
+@media (max-width: 900px) {
+    .translate_block{
+        width: 70%;
+    }
+    
+
+}
+
+@media (max-width: 600px) {
+    .translate_block{
+        width: 90%;
+    }
+    
+
+}
+
+@media (max-width: 400px) {
+    .translate_block{
+        width: 95%;
+    }
+    
+
 }
