@@ -20,7 +20,7 @@ function auth(){
                 }
             }else{
                 if(data["status"]==true){
-                    document.location.href = '/view/userspace/main';
+                    document.location.href = '/view/userspace/learn/main';
                 }else{
                     $(".user_name").addClass("wrong_auth_info");
                     $(".password").addClass("wrong_auth_info");
@@ -68,7 +68,7 @@ function save_dictionaries(){
                 }
             }else{
               
-                document.location.href = '/view/userspace/main';
+                document.location.href = '/view/userspace/learn/main';
                 
             }
         },
