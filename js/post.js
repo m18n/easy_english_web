@@ -76,3 +76,33 @@ function save_dictionaries(){
         contentType : "application/json"
     });
 }
+function set_current_lang(element){
+    
+    var current = {
+        current_lang:$(element).text()
+    };
+    let formData=JSON.stringify(current);
+    console.log(formData+"\n");
+    $.ajax({
+        type: "POST",
+        url: "/api/userspace/setcurrentlang",
+        data: formData,
+        success: function(data){
+            if(data.hasOwnProperty("error")){
+                if(data["error"]==true){
+                document.location.href = '/settings/error';
+                }else{
+                    document.location.href = '/view/login';
+                }
+            }else{
+                if(data["status"]==true){
+                    document.location.href = document.location.href;
+                }else{
+                   
+                }
+            }
+        },
+        dataType: "json",
+        contentType : "application/json"
+    });
+}

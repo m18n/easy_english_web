@@ -13,15 +13,34 @@
 <body style="font-family: 'Roboto', sans-serif;">
     <div class="container">
         <div class="menu_side none">
-            Test
+            <div class="content_menu">
+                <div class="close-button" onclick="close_menu()">
+                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24">
+                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                  </div>
+                <div class="select_lang">
+                    <div  class="dropdown">
+                        <div class="dropdown-select" onclick="select(this);">
+                        <span class="dictionary_info">{{current_lang}}</span>
+                        <i class="arrow down"></i>
+                        </div>
+                        <ul class="dropdown-list">
+                            {{#languages}}
+                            <li value="{{id}}" onclick="select_option(this);set_current_lang(this);">{{language_name}}</li>
+                            {{/languages}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="header">
-            <h1>Easy English</h1>
+            <h1>Easy <span style="color: #827ffe;">{{current_lang}}</span></h1>
             <img src="/public/img/Hamburger_icon.svg.png" alt="" class="open_menu" onclick="open_menu()">
         </div>
         <div class="content">
             <div class="add_word_block">
-                <h2>{{current_lang}}</h2>
+                
                 <textarea id="w3review" name="w3review"  placeholder="Слово або фраза"></textarea>
                 <textarea id="w3review" name="w3review"  placeholder="Контекст де використовується фраза."></textarea>
                 <div class="add_word_button">Додати</div>
@@ -30,6 +49,8 @@
         </div>
     </div>
     <script src="/public/js/jquery-3.6.0.min.js"></script>
+    <script src="/public/js/drop_down.js"></script>
+    <script src="/public/js/post.js"></script>
     <script src="/public/js/main.js"></script>
 </body>
 </html>
