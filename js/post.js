@@ -106,3 +106,76 @@ function set_current_lang(element){
         contentType : "application/json"
     });
 }
+async function translate_deepl(from_lang, into_lang, text) {
+    var deepl_translate = {
+        from_lang: from_lang,
+        into_lang: into_lang,
+        text: text
+    };
+    let formData = JSON.stringify(deepl_translate);
+    console.log(formData + "\n");
+    let res_text = "";
+    
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/deepltranslate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            res_text = data["text"];
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+    return res_text;
+}
+async function translate_gpt(from_lang, into_lang, text) {
+    var gpt_translate = {
+        from_lang: from_lang,
+        into_lang: into_lang,
+        text: text
+    };
+    let formData = JSON.stringify(gpt_translate);
+    console.log(formData + "\n");
+    var res_translate={
+        translate:"",
+        explanation:""
+    }
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/gpttranslate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            res_translate.translate=data["translate"];
+            res_translate.explanation=data["explanation"];
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+    return res_translate;
+}

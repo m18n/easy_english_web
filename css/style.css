@@ -1,15 +1,7 @@
 body{
   font-family: "Roboto", sans-serif;
 }
-.error_background{
-    background-color: red;
-}
-.container_center{
-    display: flex;
-    color:white;
-    justify-content: center;
-    
-}
+
 .roboto-thin {
     font-family: "Roboto", sans-serif;
     font-weight: 100;
