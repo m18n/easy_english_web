@@ -10,12 +10,13 @@
     
 }
 .logs_text{
-    width: 30vw;
+    min-width: 600px;
     background-color: white;
     color:black;
-    height: 18vw;
+    height: 200px;
     border: 2px solid black;
     padding: 3px;
     overflow-x: hidden;
+    word-wrap: break-word; 
     overflow-y: auto;
 }
