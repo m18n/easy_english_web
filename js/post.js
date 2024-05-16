@@ -141,11 +141,12 @@ async function translate_deepl(from_lang, into_lang, text) {
     
     return res_text;
 }
-async function translate_gpt(from_lang, into_lang, text) {
+async function translate_gpt(from_lang, into_lang, text,text_explain) {
     var gpt_translate = {
         from_lang: from_lang,
         into_lang: into_lang,
-        text: text
+        text: text,
+        text_explain:text_explain
     };
     let formData = JSON.stringify(gpt_translate);
     console.log(formData + "\n");
@@ -178,4 +179,47 @@ async function translate_gpt(from_lang, into_lang, text) {
     }
     
     return res_translate;
+}
+async function save_translated(lang_from_translated_id, lang_into_translated_id,  translated_text,
+    context_text,deepl_translated,deepl_check_deepl,gpt_translated,deepl_check_gpt_translated,explanation_gpt) {
+    var translated = {
+        id:0,
+        lang_from_translated_id: lang_from_translated_id,
+        lang_into_translated_id: lang_into_translated_id,
+        translated_text: translated_text,
+        context_text:context_text,
+        deepl_translated:deepl_translated,
+        deepl_check_deepl:deepl_check_deepl,
+        gpt_translated:gpt_translated,
+        deepl_check_gpt_translated:deepl_check_gpt_translated,
+        explanation_gpt:explanation_gpt
+
+    };
+    let formData = JSON.stringify(translated);
+    console.log(formData + "\n");
+   
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/savetranslate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            console.log("succes save")
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+
 }

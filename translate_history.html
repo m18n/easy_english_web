@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/public/css/main.css">
 <link rel="stylesheet" href="/public/css/menu.css">
+<link rel="stylesheet" href="/public/css/translate_history.css">
 </head>
 <body style="font-family: 'Roboto', sans-serif;">
     <div class="container">
@@ -33,7 +33,6 @@
                         </ul>
                     </div>
                 </div>
-
                 <a href="/view/userspace/learn/main" class="a menu_item">
                     Головна сторінка
                     <div class="hr"></div>
@@ -54,22 +53,49 @@
         </div>
         <div class="header">
             <a href="/view/userspace/learn/main" class="a"><h1>Easy <span style="color: #827ffe;">{{current_lang}}</span></h1></a>
+            
             <img src="/public/img/Hamburger_icon.svg.png" alt="" class="open_menu" onclick="open_menu()">
         </div>
         <div class="content">
-            <div class="add_word_block">
-                
-                <textarea id="w3review" name="w3review"  placeholder="Слово або фраза"></textarea>
-                <textarea id="w3review" name="w3review"  placeholder="Контекст де використовується фраза."></textarea>
-                <button class="add_word_button">Додати</button> 
+            <h1>History</h1>
+            <div class="story_block">
+                {{#translate_history}}
+                <div class="story_item" value="{{id}}">
+                    <a href="/view/userspace/translate/history/item/{{id}}" class="click_block">
+
+                    </a>
+                    <div class="text_block">
+                        <span class="text_from">{{translated_text}}</span>
+                        -
+                        <span class="text_into">{{gpt_translated}}</span>
+                    </div>
+                    <div class="delete_block">
+                        <button>Delete</button>
+                       
+                    </div>
+                </div>
+                {{/translate_history}}
             </div>
-            
+            <div class="pagination_block">
+                <img src="/public/img/arr_pagination.png" alt="" id="back_arr" onclick="go_back();">
+                <button class="first_page" onclick="go_first();">
+                    1
+                </button>
+                
+                <img src="/public/img/arr_pagination.png" alt=""  id="next_arr" onclick="go_next();">
+                
+            </div>
         </div>
     </div>
+    <script>
+        {{#current_lang_id}}
+        let current_lang_id={{current_lang_id}}
+        {{/current_lang_id}}
+    </script>
     <script src="/public/js/jquery-3.6.0.min.js"></script>
     <script src="/public/js/drop_down.js"></script>
     <script src="/public/js/post.js"></script>
-    <script src="/public/js/main.js"></script>
     <script src="/public/js/menu.js"></script>
+    <script src="/public/js/translate_history.js"></script>
 </body>
 </html>

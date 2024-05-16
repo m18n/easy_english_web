@@ -15,13 +15,22 @@ async function translated(){
     let item_from=$(".s_item_from").text();
     let item_into=$(".s_item_into").text();
     let translate_text=$("#translate_text").val();
+    let translate_explain=$("#translate_explain").val();
     let text_deepl=await translate_deepl(item_from,item_into,translate_text);
     $("#deepl_translated").text(text_deepl);
     let text_deepl_check=await translate_deepl(item_into,item_from,text_deepl);
     $("#deepl_translated_check").text(text_deepl_check);
-    let gpt_tr=await translate_gpt(item_from,item_into,translate_text);
+    let gpt_tr=await translate_gpt(item_from,item_into,translate_text,translate_explain);
     $("#gpt_translated").text(gpt_tr.translate);
     let gpt_check_translated=await translate_deepl(item_into,item_from,gpt_tr.translate);
     $("#gpt_translated_check").text(gpt_check_translated);
     $("#gpt_explanation").text(gpt_tr.explanation);
+    let id_from_lang=parseInt($(".s_item_from").attr("value"));
+    let id_into_lang=parseInt($(".s_item_into").attr("value"));
+    await save_translated(id_from_lang,id_into_lang,translate_text,translate_explain,text_deepl,
+        text_deepl_check,gpt_tr.translate,gpt_check_translated,gpt_tr.explanation);
+}
+function clear_text(){
+    $("#translate_text").val("");
+    $("#translate_explain").val("");
 }
