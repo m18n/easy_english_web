@@ -27,3 +27,8 @@ function copy(element){
     
  
 }
+async function delete_item(){
+    
+    await delete_history_item(current_id);
+    back_page();
+}

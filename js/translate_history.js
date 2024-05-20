@@ -26,3 +26,8 @@ function go_first(){
     document.location.href="/view/userspace/translate/history/p/1";
 
 }
+async function delete_item(element){
+    let id=parseInt($(element).closest('.story_item').attr("value"));
+    await delete_history_item(id);
+    document.location.href=document.location.href;
+}

@@ -38,7 +38,7 @@
 }
 .translate_button{
     display: flex;
-    margin:0px;
+    margin-top: 10px;
     border:none;
     align-self: flex-end;
     background-color: #827ffe;
@@ -58,7 +58,7 @@
 }
 .clear_button{
     display: flex;
-    margin-top: 10px;
+    
     border:none;
     align-self: flex-end;
     background-color: #827ffe;

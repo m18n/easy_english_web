@@ -119,7 +119,7 @@ async function translate_deepl(from_lang, into_lang, text) {
     try {
         const data = await $.ajax({
             type: "POST",
-            url: "/api/userspace/deepltranslate",
+            url: "/api/userspace/translator/deepltranslate",
             data: formData,
             dataType: "json",
             contentType: "application/json"
@@ -157,7 +157,7 @@ async function translate_gpt(from_lang, into_lang, text,text_explain) {
     try {
         const data = await $.ajax({
             type: "POST",
-            url: "/api/userspace/gpttranslate",
+            url: "/api/userspace/translator/gpttranslate",
             data: formData,
             dataType: "json",
             contentType: "application/json"
@@ -170,7 +170,7 @@ async function translate_gpt(from_lang, into_lang, text,text_explain) {
                 document.location.href = '/view/login';
             }
         } else {
-            res_translate.translate=data["translate"];
+            res_translate.translate=data["sentence"];
             res_translate.explanation=data["explanation"];
         }
     } catch (error) {
@@ -179,6 +179,35 @@ async function translate_gpt(from_lang, into_lang, text,text_explain) {
     }
     
     return res_translate;
+}
+async function delete_history_item(id_item){
+    var delete_it = {
+        id:id_item
+    };
+    let formData = JSON.stringify(delete_it);
+    console.log(formData + "\n");
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/translator/history/deleteitem",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            console.log("succes save")
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
 }
 async function save_translated(lang_from_translated_id, lang_into_translated_id,  translated_text,
     context_text,deepl_translated,deepl_check_deepl,gpt_translated,deepl_check_gpt_translated,explanation_gpt) {
@@ -201,7 +230,7 @@ async function save_translated(lang_from_translated_id, lang_into_translated_id,
     try {
         const data = await $.ajax({
             type: "POST",
-            url: "/api/userspace/savetranslate",
+            url: "/api/userspace/translator/savetranslated",
             data: formData,
             dataType: "json",
             contentType: "application/json"

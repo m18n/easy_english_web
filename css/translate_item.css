@@ -78,6 +78,9 @@
 .copy_text:active{
     background-color: #6361c9 !important;
 }
+.delete{
+    align-self: center;
+}
 @media (max-width: 530px) {
     .translate_block{
         width: 70%;

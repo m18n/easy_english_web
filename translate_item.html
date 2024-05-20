@@ -119,14 +119,15 @@
                     <div class="hr"></div>
                     {{/translate_history}}
                 </div>
+               
             </div>
-            
+            <button class="copy_text delete"  onclick="delete_item(this);">Видалити</button>
         </div>
     </div>
     <script>
-        {{#current_lang_id}}
-        let current_lang_id={{current_lang_id}}
-        {{/current_lang_id}}
+        {{#translate_history}}
+        let current_id={{id}}
+        {{/translate_history}}
     </script>
     <script src="/public/js/jquery-3.6.0.min.js"></script>
     <script src="/public/js/drop_down.js"></script>
