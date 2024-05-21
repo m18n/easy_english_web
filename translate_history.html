@@ -58,6 +58,20 @@
         </div>
         <div class="content">
             <h1>History</h1>
+            <div class="select_lang">
+                <div  class="dropdown">
+                    <div class="dropdown-select" onclick="select(this);">
+                    <span class="dictionary_info">{{current_lang}}</span>
+                    <i class="arrow down"></i>
+                    </div>
+                    <ul class="dropdown-list">
+                        <li value="-1" onclick="select_option(this); select_lang_history(this);" class="lang_name">all</li>
+                        {{#all_languages}}
+                        <li value="{{id}}" onclick="select_option(this); select_lang_history(this);" class="lang_name">{{language_name}}</li>
+                        {{/all_languages}}
+                    </ul>
+                </div>
+            </div>
             <div class="story_block">
                 {{#translate_history}}
                 <div class="story_item" value="{{id}}">
@@ -88,14 +102,18 @@
         </div>
     </div>
     <script>
+        {{#current_lang_history_id}}
+        let current_lang_history_id={{current_lang_history_id}};
+        {{/current_lang_history_id}}
         {{#current_lang_id}}
-        let current_lang_id={{current_lang_id}}
+        let current_lang_id={{current_lang_id}};
         {{/current_lang_id}}
     </script>
     <script src="/public/js/jquery-3.6.0.min.js"></script>
     <script src="/public/js/drop_down.js"></script>
     <script src="/public/js/post.js"></script>
     <script src="/public/js/menu.js"></script>
+    <script src="/public/js/drop_down.js"></script>
     <script src="/public/js/translate_history.js"></script>
 </body>
 </html>

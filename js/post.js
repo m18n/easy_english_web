@@ -42,18 +42,21 @@ function save_dictionaries(){
     $(".dropdown_lang").each(function() {
         divArray.push($(this));
     });
-    var dictionaries_array=[];
+    var dictionaries_info={
+        dictionaries_ids:[],
+        dictionaries_level_ids:[]
+    }
+
     divArray.forEach(function(divElement) {
         // Знаходимо елементи з класом ".selection" всередині поточного divElement
         var dictionary_info = divElement.find(".dictionary_info");
-        dictionaries_array.push(parseInt($(dictionary_info).attr("value")));
+        var dictionary_level=divElement.find(".dictionary_level");
+        dictionaries_info.dictionaries_ids.push(parseInt($(dictionary_info).attr("value")));
+        dictionaries_info.dictionaries_level_ids.push(parseInt($(dictionary_level).attr("value")));
         // Тепер в selectionElements ви маєте масив з усіма елементами з класом ".selection",
         // які є дочірніми елементами поточного divElement
     });
-    var dictionaries = {
-        dictionaries_id:dictionaries_array
-    };
-    let formData=JSON.stringify(dictionaries);
+    let formData=JSON.stringify(dictionaries_info);
     console.log(formData+"\n");
     $.ajax({
         type: "POST",

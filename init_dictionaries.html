@@ -11,19 +11,35 @@
 <link rel="stylesheet" href="/public/css/init.css">
 </head>
 <body style="font-family: 'Roboto', sans-serif;">
-    <div  class="dropdown select_lang select_base none">
-        <div class="dropdown-select" onclick="select(this);">
-          <span class="dictionary_info">Оберіть мову</span>
-          <i class="arrow down"></i>
-        </div>
-        <ul class="dropdown-list">
-            {{#languages}}
-            <li value="{{id}}" onclick="select_option(this);">{{language_name}}</li>
-            {{/languages}}
-            
+    <div class="lang_item select_base none">
+        <div  class="dropdown select_lang ">
+            <div class="dropdown-select" onclick="select(this);">
+            <span class="dictionary_info">Оберіть мову</span>
+            <i class="arrow down"></i>
+            </div>
+            <ul class="dropdown-list">
+                {{#languages}}
+                <li value="{{id}}" onclick="select_option(this);">{{language_name}}</li>
+                {{/languages}}
+                
 
-         
-        </ul>
+            
+            </ul>
+        </div>
+        <div  class="dropdown select_lang select_level">
+            <div class="dropdown-select" onclick="select(this);">
+            <span class="dictionary_level">Рівень</span>
+            <i class="arrow down"></i>
+            </div>
+            <ul class="dropdown-list">
+                {{#languages_levels}}
+                <li value="{{id}}" onclick="select_option(this);">{{level_name}}</li>
+                {{/languages_levels}}
+                
+
+            
+            </ul>
+        </div>
     </div>
     <div class="container">
         <div class="init_dictionary">

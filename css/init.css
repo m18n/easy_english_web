@@ -19,6 +19,14 @@ h1, h2{
     border-radius: 10px;
     padding: 10px 50px;
 }
+.lang_item{
+  display: flex;
+  flex-direction: row;
+
+}
+.select_level{
+  width: 30% !important;
+}
 .dropdown {
     width: 100%;
     font-size: 16px;
