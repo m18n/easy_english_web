@@ -64,6 +64,19 @@
     width: 30px;
     align-self: flex-end;
 }
+.button_delete{
+    display: flex;
+    margin-top: 10px;
+    border:none;
+    align-items: center;
+    justify-content: center;
+    background-color: #827ffe;
+    color:white;
+    width: 100px;
+    height: 40px;
+    border-radius: 2px;
+    font-weight: 600;
+}
 .type{
     width: 100%;
 }
