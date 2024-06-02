@@ -122,7 +122,7 @@ async function translate_deepl(from_lang, into_lang, text) {
     try {
         const data = await $.ajax({
             type: "POST",
-            url: "/api/userspace/translator/deepltranslate",
+            url: "/api/userspace/translator/deepl/translate",
             data: formData,
             dataType: "json",
             contentType: "application/json"
@@ -144,7 +144,7 @@ async function translate_deepl(from_lang, into_lang, text) {
     
     return res_text;
 }
-async function translate_gpt(from_lang, into_lang, text,text_explain) {
+async function translate_gpt_full_speak(from_lang, into_lang, text,text_explain) {
     var gpt_translate = {
         from_lang: from_lang,
         into_lang: into_lang,
@@ -160,7 +160,124 @@ async function translate_gpt(from_lang, into_lang, text,text_explain) {
     try {
         const data = await $.ajax({
             type: "POST",
-            url: "/api/userspace/translator/gpttranslate",
+            url: "/api/userspace/translator/gpt/full/speak/translate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            res_translate.translate=data["sentence"];
+            res_translate.explanation=data["explanation"];
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+    return res_translate;
+}
+async function translate_gpt_full_formal(from_lang, into_lang, text,text_explain) {
+    var gpt_translate = {
+        from_lang: from_lang,
+        into_lang: into_lang,
+        text: text,
+        text_explain:text_explain
+    };
+    let formData = JSON.stringify(gpt_translate);
+    console.log(formData + "\n");
+    var res_translate={
+        translate:"",
+        explanation:""
+    }
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/translator/gpt/full/formal/translate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            res_translate.translate=data["sentence"];
+            res_translate.explanation=data["explanation"];
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+    return res_translate;
+}
+async function translate_gpt_short_speak(from_lang, into_lang, text,text_explain) {
+    var gpt_translate = {
+        from_lang: from_lang,
+        into_lang: into_lang,
+        text: text,
+        text_explain:text_explain
+    };
+    let formData = JSON.stringify(gpt_translate);
+    console.log(formData + "\n");
+    var res_translate={
+        translate:"",
+        explanation:""
+    }
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/translator/gpt/short/speak/translate",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            res_translate.translate=data["sentence"];
+            res_translate.explanation=data["explanation"];
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+    
+    return res_translate;
+}
+async function translate_gpt_short_formal(from_lang, into_lang, text,text_explain) {
+    var gpt_translate = {
+        from_lang: from_lang,
+        into_lang: into_lang,
+        text: text,
+        text_explain:text_explain
+    };
+    let formData = JSON.stringify(gpt_translate);
+    console.log(formData + "\n");
+    var res_translate={
+        translate:"",
+        explanation:""
+    }
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/translator/gpt/short/formal/translate",
             data: formData,
             dataType: "json",
             contentType: "application/json"
@@ -213,7 +330,8 @@ async function delete_history_item(id_item){
     }
 }
 async function save_translated(lang_from_translated_id, lang_into_translated_id,  translated_text,
-    context_text,deepl_translated,deepl_check_deepl,gpt_translated,deepl_check_gpt_translated,explanation_gpt) {
+    context_text,deepl_translated,deepl_check_deepl,speak_gpt_translated,speak_deepl_check_gpt_translated,speak_explanation_gpt,
+    formal_gpt_translated,formal_deepl_check_gpt_translated,formal_explanation_gpt,is_full) {
     var translated = {
         id:0,
         lang_from_translated_id: lang_from_translated_id,
@@ -222,9 +340,13 @@ async function save_translated(lang_from_translated_id, lang_into_translated_id,
         context_text:context_text,
         deepl_translated:deepl_translated,
         deepl_check_deepl:deepl_check_deepl,
-        gpt_translated:gpt_translated,
-        deepl_check_gpt_translated:deepl_check_gpt_translated,
-        explanation_gpt:explanation_gpt
+        speak_gpt_translated:speak_gpt_translated,
+        speak_deepl_check_gpt_translated:speak_deepl_check_gpt_translated,
+        speak_explanation_gpt:speak_explanation_gpt,
+        formal_gpt_translated:formal_gpt_translated,
+        formal_deepl_check_gpt_translated:formal_deepl_check_gpt_translated,
+        formal_explanation_gpt:formal_explanation_gpt,
+        is_full:is_full
 
     };
     let formData = JSON.stringify(translated);

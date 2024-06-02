@@ -60,26 +60,32 @@
 }
 .copy_text{
     display: flex;
-    margin-top: 10px;
-    border:none;
-    align-self: flex-end;
-    background-color: #827ffe;
-    color:white;
-    width: 100px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 600;
-    font-size: 15px;
-    border-radius: 7px;
     cursor: pointer;
+    width: 30px;
+    align-self: flex-end;
+}
+.type{
+    width: 100%;
+}
+.type_text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.type_text h4{
+    margin-left: 5px;
 }
 .copy_text:active{
-    background-color: #6361c9 !important;
+    background-color: rgba(0, 0, 0, 0.301);
 }
 .delete{
     align-self: center;
+}
+.formal_block{
+    width: 100%;
+}
+.speak_block{
+    width: 100%;
 }
 @media (max-width: 530px) {
     .translate_block{

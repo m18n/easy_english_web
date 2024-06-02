@@ -81,7 +81,12 @@
                     <div class="text_block">
                         <span class="text_from">{{translated_text}}</span>
                         -
-                        <span class="text_into">{{gpt_translated}}</span>
+                        {{#is_full}}
+                        <span class="text_into">{{formal_gpt_translated}}</span>
+                        {{/is_full}}
+                        {{^is_full}}
+                        <span class="text_into">{{speak_gpt_translated}}</span>
+                        {{/is_full}}
                     </div>
                     <div class="delete_block">
                         <button onclick="delete_item(this);">Delete</button>

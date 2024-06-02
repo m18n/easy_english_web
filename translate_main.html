@@ -92,29 +92,71 @@
                     <textarea name="" id="translate_explain" placeholder="Надай контекст"></textarea>
                 </div>
                 <button class="clear_button" onclick="clear_text();">Очистити</button>
+                <div class="choice_mod">
+                    <div class="translate_type">
+                        <span>Розмовна мова</span> <input type="checkbox" id="speak_checkbox" onclick="speake_checkbox(this);">
+                        <span>Формальна мова</span><input type="checkbox" id="formal_checkbox" onclick="formal_checkbox(this);">
+                    </div>
+                    <div class="hr_minimum"></div>
+                    <div class="cut_down">
+                        <span>Скоротити текст</span><input type="checkbox" id="cut_down_checkbox" onclick="cut_down_checkbox(this);">
+                    </div>
+                    <div class="hr"></div>
+                </div>
+                
                 <div class="deepl_translate trans">
                     <span>Deepl</span>
                     <p id="deepl_translated"class="trans_item"></p>
+                    <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                 </div>
                 <div class="hr"></div>
                 <div class="deep_translate_check trans">
-                    <span>Deepl Check</span>
+                    <span>Deepl Check -> Deepl</span>
                     <p id="deepl_translated_check" class="trans_item"></p>
+                    <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                 </div>
-                <div class="hr"></div>
-                <div class="gpt_translate trans">
-                    <span>GPT</span>
-                    <p id="gpt_translated" class="trans_item"></p>
+               
+                <div class="speak_lang none">
+                    <div class="hr_big"></div>
+                    <h2 class="name_group">Розмовна</h2>
+                    <div class="gpt_translate trans">
+                        <span>Gpt</span>
+                        <p id="gpt_translated" class="trans_item"></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="explanation_translate trans">
+                        <span>Deepl Check -> Gpt</span>
+                        <p id="gpt_translated_check" class="trans_item"></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="explanation_translate trans">
+                        <span>Explanation Gpt</span>
+                        <p id="gpt_explanation" class="trans_item" ></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
                 </div>
-                <div class="hr"></div>
-                <div class="explanation_translate trans">
-                    <span>GPT Check</span>
-                    <p id="gpt_translated_check" class="trans_item"></p>
-                </div>
-                <div class="hr"></div>
-                <div class="explanation_translate trans">
-                    <span>Explanation</span>
-                    <p id="gpt_explanation" class="trans_item" ></p>
+                <div class="formal_lang none">
+                    <div class="hr_big"></div>
+                    <h2 class="name_group">Формальна</h2>
+                    <div class="gpt_translate trans">
+                        <span>Gpt</span>
+                        <p id="gpt_translated" class="trans_item"></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="explanation_translate trans">
+                        <span>Deepl Check -> Gpt</span>
+                        <p id="gpt_translated_check" class="trans_item"></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="explanation_translate trans">
+                        <span>Explanation Gpt</span>
+                        <p id="gpt_explanation" class="trans_item" ></p>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                    </div>
                 </div>
             </div>
         </div>

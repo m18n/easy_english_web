@@ -77,46 +77,83 @@
                     <div class="translated_text item_info">
                         <span class="explain_block">Текст який перекладали</span>
                         <span class="text">{{translated_text}}</span>
-                        
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                     </div>
                     <div class="hr"></div>
                     <div class="context_text item_info">
                         <span class="explain_block">Контекст в якому текст</span>
                         <span class="text">{{context_text}}</span> 
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                     </div>
                     <div class="hr"></div>
                     <div class="deepl_translated item_info">
                         <span class="explain_block">Переклад Deepl</span>
                         <span class="text">{{deepl_translated}}</span> 
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                     </div>
                     <div class="hr"></div>
                     <div class="deepl_check item_info">
                         <span class="explain_block">Перевірка перекладу Deepl</span>
                         <span class="text">{{deepl_check_deepl}}</span>
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
                     </div>
                     <div class="hr"></div>
-                    <div class="gpt_translated item_info">
-                        <span class="explain_block">Переклад GPT</span>
-                        <span class="text">{{gpt_translated}}</span>
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                    <div class="type">
+                        {{#is_full}}
+                    <div class="type_text">
+                    <span>Тип перекладу:</span><h4> Повний</h4>
+                    </div>
+                    {{/is_full}}
+                    {{^is_full}}
+                    <div class="type_text">
+                    <span>Тип перекладу:</span><h4>Скорочений</h4>
+                </div>
+                    {{/is_full}}
+                    </div>
+                    
+                    <div class="hr"></div>
+                    <h2>Розмовною</h2>
+                    <div class="speak_block">
+                        <div class="gpt_translated item_info">
+                            <span class="explain_block">Переклад GPT</span>
+                            <span class="text">{{speak_gpt_translated}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="gpt_check item_info">
+                            <span class="explain_block">Перевірка перекладу GPT перекладачем Deepl</span>
+                            <span class="text">{{speak_deepl_check_gpt_translated}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="gpt_explain item_info">
+                            <span class="explain_block">Пояснення GPT</span>
+                            <span class="text">{{speak_explanation_gpt}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
                     <div class="hr"></div>
-                    <div class="gpt_check item_info">
-                        <span class="explain_block">Перевірка перекладу GPT перекладачем Deepl</span>
-                        <span class="text">{{deepl_check_gpt_translated}}</span>
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
+                    <h2>Формальною</h2>
+                    <div class="formal_block">
+                        <div class="gpt_translated item_info">
+                            <span class="explain_block">Переклад GPT</span>
+                            <span class="text">{{formal_gpt_translated}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="gpt_check item_info">
+                            <span class="explain_block">Перевірка перекладу GPT перекладачем Deepl</span>
+                            <span class="text">{{formal_deepl_check_gpt_translated}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                           
+                        </div>
+                        <div class="hr"></div>
+                        <div class="gpt_explain item_info">
+                            <span class="explain_block">Пояснення GPT</span>
+                            <span class="text">{{formal_explanation_gpt}}</span>
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
-                    <div class="hr"></div>
-                    <div class="gpt_explain item_info">
-                        <span class="explain_block">Пояснення GPT</span>
-                        <span class="text">{{explanation_gpt}}</span>
-                        <button class="copy_text" onclick="copy(this);">Копіювати</button>
-                    </div>
-                    <div class="hr"></div>
                     {{/translate_history}}
                 </div>
                
