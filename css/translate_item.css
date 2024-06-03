@@ -62,7 +62,19 @@
     display: flex;
     cursor: pointer;
     width: 30px;
-    align-self: flex-end;
+     
+}
+.widget{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.speech_text{
+    width: 40px;
+    
+    cursor: pointer;
+   
 }
 .button_delete{
     display: flex;

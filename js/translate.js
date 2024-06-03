@@ -29,28 +29,29 @@ $(document).ready(function() {
     document.body.removeChild(textArea);
 }
 function copy(element){
-    let textToCopy=$(element).siblings('.trans_item').text();
+    let textToCopy=$(element).closest(".trans").find('.trans_item').text();
     copyTextToClipboard(textToCopy);
-    
- 
+
 }
 var last_from_lang="Ukrainian";
 var last_into_lang="Ukrainian";
-function speach(element){
-    let widget=$(element).closest('.widget');
-    let name_lang="";
+let currentAudio = null; // Глобальна змінна для збереження поточного аудіоелемента
+
+function speach(element) {
+    let widget = $(element).closest('.widget');
+    let name_lang = "";
     if (widget.hasClass('from_text')) {
-        name_lang=last_from_lang;
-    }else{
-        name_lang=last_into_lang;
+        name_lang = last_from_lang;
+    } else {
+        name_lang = last_into_lang;
     }
-    let text= $(element).closest('.trans').find(".trans_item").text();
-    if(text==""){
-        text="Тестування"
+    let text = $(element).closest('.trans').find(".trans_item").text();
+    if (text == "") {
+        text = "Тестування"
     }
     const requestData = {
         name_lang: name_lang,
-        text:text
+        text: text
     };
     console.log("REQ:" + JSON.stringify(requestData));
     fetch('/api/text', {
@@ -68,22 +69,24 @@ function speach(element){
         return response.blob(); // Перетворення відповіді на Blob
     })
     .then(blob => {
-        const url = URL.createObjectURL(blob); // Створення URL для Blob
-        const audio = new Audio(url); // Створення аудіо елемента
-        audio.play(); // Відтворення аудіо
+        if (currentAudio) {
+            currentAudio.pause(); // Зупинити поточне аудіо
+            currentAudio.src = ""; // Очистити джерело
+        }
 
-        audio.onended = function() {
+        const url = URL.createObjectURL(blob); // Створення URL для Blob
+        currentAudio = new Audio(url); // Створення аудіо елемента
+        currentAudio.play(); // Відтворення аудіо
+
+        currentAudio.onended = function() {
             URL.revokeObjectURL(url); // Видалення URL для звільнення пам'яті
             console.log('Audio has been played and removed from memory');
+            currentAudio = null; // Очистити посилання на поточний аудіоелемент
         };
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);
     });
-
-    
-   
-    
 }
 function swap_lang(element){
     let id_from=$(".s_item_from").attr("value");

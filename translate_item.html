@@ -65,37 +65,48 @@
                     {{#translate_history}}
                     <div class="langs">
                         <div class="lang_from">
-
-                            {{lang_from}}
+                            <span class="lang_from_t">{{lang_from}}</span>
                         </div>
                         <span style="font-weight: 700;">--></span>
                         <div class="lang_into">
-                            {{lang_into}}
+                            <span class="lang_into_t">{{lang_into}}</span>
                         </div>
                     </div>
                     
                     <div class="translated_text item_info">
                         <span class="explain_block">Текст який перекладали</span>
                         <span class="text">{{translated_text}}</span>
-                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        <div class="widget from_text">
+                            <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
                     <div class="hr"></div>
                     <div class="context_text item_info">
                         <span class="explain_block">Контекст в якому текст</span>
                         <span class="text">{{context_text}}</span> 
-                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        <div class="widget from_text">
+                            <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
                     <div class="hr"></div>
                     <div class="deepl_translated item_info">
                         <span class="explain_block">Переклад Deepl</span>
                         <span class="text">{{deepl_translated}}</span> 
-                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        <div class="widget into_text">
+                            <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
                     <div class="hr"></div>
                     <div class="deepl_check item_info">
                         <span class="explain_block">Перевірка перекладу Deepl</span>
                         <span class="text">{{deepl_check_deepl}}</span>
-                        <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        <div class="widget from_text">
+                            <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                        </div>
                     </div>
                     <div class="hr"></div>
                     <div class="type">
@@ -117,19 +128,28 @@
                         <div class="gpt_translated item_info">
                             <span class="explain_block">Переклад GPT</span>
                             <span class="text">{{speak_gpt_translated}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget into_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                         </div>
                         <div class="hr"></div>
                         <div class="gpt_check item_info">
                             <span class="explain_block">Перевірка перекладу GPT перекладачем Deepl</span>
                             <span class="text">{{speak_deepl_check_gpt_translated}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget from_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                         </div>
                         <div class="hr"></div>
                         <div class="gpt_explain item_info">
                             <span class="explain_block">Пояснення GPT</span>
                             <span class="text">{{speak_explanation_gpt}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget from_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                         </div>
                     </div>
                     <div class="hr"></div>
@@ -138,20 +158,29 @@
                         <div class="gpt_translated item_info">
                             <span class="explain_block">Переклад GPT</span>
                             <span class="text">{{formal_gpt_translated}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget into_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                         </div>
                         <div class="hr"></div>
                         <div class="gpt_check item_info">
                             <span class="explain_block">Перевірка перекладу GPT перекладачем Deepl</span>
                             <span class="text">{{formal_deepl_check_gpt_translated}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget from_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                            
                         </div>
                         <div class="hr"></div>
                         <div class="gpt_explain item_info">
                             <span class="explain_block">Пояснення GPT</span>
                             <span class="text">{{formal_explanation_gpt}}</span>
-                            <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            <div class="widget from_text">
+                                <img class="speech_text" src="/public/img/speech_icon.webp" alt="" onclick="speech(this);">
+                                <img class="copy_text" src="/public/img/copy-icon.png" alt="" onclick="copy(this);">
+                            </div>
                         </div>
                     </div>
                     {{/translate_history}}
