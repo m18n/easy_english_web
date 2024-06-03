@@ -76,6 +76,7 @@
     height: 40px;
     border-radius: 2px;
     font-weight: 600;
+    cursor: pointer;
 }
 .type{
     width: 100%;

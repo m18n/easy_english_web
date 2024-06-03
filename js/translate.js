@@ -34,16 +34,70 @@ function copy(element){
     
  
 }
+var last_from_lang="Ukrainian";
+var last_into_lang="Ukrainian";
+function speach(element){
+    let widget=$(element).closest('.widget');
+    let name_lang="";
+    if (widget.hasClass('from_text')) {
+        name_lang=last_from_lang;
+    }else{
+        name_lang=last_into_lang;
+    }
+    let text= $(element).closest('.trans').find(".trans_item").text();
+    if(text==""){
+        text="Тестування"
+    }
+    const requestData = {
+        name_lang: name_lang,
+        text:text
+    };
+    console.log("REQ:" + JSON.stringify(requestData));
+    fetch('/api/text', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestData),
+        credentials: 'include' // Додає куки і аутентифікацію до запиту
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.blob(); // Перетворення відповіді на Blob
+    })
+    .then(blob => {
+        const url = URL.createObjectURL(blob); // Створення URL для Blob
+        const audio = new Audio(url); // Створення аудіо елемента
+        audio.play(); // Відтворення аудіо
+
+        audio.onended = function() {
+            URL.revokeObjectURL(url); // Видалення URL для звільнення пам'яті
+            console.log('Audio has been played and removed from memory');
+        };
+    })
+    .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+    });
+
+    
+   
+    
+}
 function swap_lang(element){
     let id_from=$(".s_item_from").attr("value");
     let id_into=$(".s_item_into").attr("value");
     $('li.item_from_list[value="'+id_into+'"]').click();
     $('li.item_into_list[value="'+id_from+'"]').click();
 }
+
 async function translated() {
     $(".trans_item").text("");
     const item_from = $(".s_item_from").text();
     const item_into = $(".s_item_into").text();
+    last_from_lang=item_from;
+    last_into_lang=item_into;
     const translate_text = $("#translate_text").val();
     const translate_explain = $("#translate_explain").val();
 

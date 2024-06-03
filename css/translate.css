@@ -112,6 +112,15 @@
     margin-top: 10px;
     margin-bottom: 2px;
 }
+.widget{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.speech_text{
+    width: 40px;
+    cursor: pointer;
+}
 .hr_big{
     width: 100%;
     height: 2px;
