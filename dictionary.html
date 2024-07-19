@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/public/css/main.css">
 <link rel="stylesheet" href="/public/css/menu.css">
+<link rel="stylesheet" href="/public/css/dictionary.css">
 </head>
 <body style="font-family: 'Roboto', sans-serif;">
     <div class="container">
@@ -60,17 +61,57 @@
             <a href="/view/userspace/learn/main" class="a"><h1>Easy <span style="color: #827ffe;">{{current_lang}}</span></h1></a>
             <img src="/public/img/Hamburger_icon.svg.png" alt="" class="open_menu" onclick="open_menu()">
         </div>
-        <div class="content">
-            <div class="add_word_block">
+        <div class="cont">
+            <h1>Словник {{current_lang}}</h1>
+            <div class="inputs">
+                <textarea name="text" id="ukr_sentence" placeholder="Українське речення"></textarea>
+                <textarea name="text" id="lang_sentence" placeholder="{{current_lang}} речення"></textarea>
+                
+                <button onclick="add_newsentence();">Додати</button>
+            </div>
+            <div class="hrr"></div>
+            <div class="dumps">
+                <button>Експорт по запису</button>
+                <button>Експорт всього</button>
+            </div>
+            <div class="sentences_items">
+                <div class="item_sentence">
+                    Вивід всіх речень. Пагінація. Видалення конкретного речення. Дамп в анкі та налаштування вказівника звідки робити дамп.
+                </div>
+                {{#dictionary}}
+                <div class="item_sentence" value="{{id}}">
+                    <div class="item_text">
+                        <span class="sentence_from">{{sentence_from}}</span>
+                        <span class="sentence_into">{{sentence_into}}</span>
+                    </div>
+                    <div class="item_button">
+                        <button onclick="delete_item(this);">Видалити</button>
+                        <button class="pointer" onclick="set_item(this);">!</button>
+                    </div>
+                    
+                </div>
+                {{/dictionary}}
+            </div>
+            <div class="pagination_block">
+                <img src="/public/img/arr_pagination.png" alt="" id="back_arr" onclick="go_back();">
+                <button class="first_page" onclick="go_first();">
+                    1
+                </button>
+                
+                <img src="/public/img/arr_pagination.png" alt=""  id="next_arr" onclick="go_next();">
                 
             </div>
-            
         </div>
+       
     </div>
+    <script>
+        let index_dump={{index_dump}};
+    </script>
     <script src="/public/js/jquery-3.6.0.min.js"></script>
     <script src="/public/js/drop_down.js"></script>
     <script src="/public/js/post.js"></script>
     <script src="/public/js/main.js"></script>
     <script src="/public/js/menu.js"></script>
+    <script src="/public/js/dictionary.js"></script>
 </body>
 </html>

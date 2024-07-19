@@ -329,6 +329,64 @@ async function delete_history_item(id_item){
         // Handle error if needed
     }
 }
+async function delete_dict_item(id_item){
+    var delete_it = {
+        id:id_item
+    };
+    let formData = JSON.stringify(delete_it);
+    console.log(formData + "\n");
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/dictionary/deleteitem",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            console.log("succes delete")
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+}
+async function set_indexdump(indexdump){
+    var delete_it = {
+        id:indexdump
+    };
+    let formData = JSON.stringify(delete_it);
+    console.log(formData + "\n");
+    try {
+        const data = await $.ajax({
+            type: "POST",
+            url: "/api/userspace/dictionary/setindexdump",
+            data: formData,
+            dataType: "json",
+            contentType: "application/json"
+        });
+        
+        if (data.hasOwnProperty("error")) {
+            if (data["error"] == true) {
+                document.location.href = '/settings/error';
+            } else {
+                document.location.href = '/view/login';
+            }
+        } else {
+            console.log("succes set")
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // Handle error if needed
+    }
+}
 async function save_translated(lang_from_translated_id, lang_into_translated_id,  translated_text,
     context_text,deepl_translated,deepl_check_deepl,speak_gpt_translated,speak_deepl_check_gpt_translated,speak_explanation_gpt,
     formal_gpt_translated,formal_deepl_check_gpt_translated,formal_explanation_gpt,is_full) {
@@ -376,4 +434,34 @@ async function save_translated(lang_from_translated_id, lang_into_translated_id,
     }
     
 
+}
+function add_newsentence(){
+    var current = {
+        sentence_from:$("#ukr_sentence").val(),
+        sentence_into:$("#lang_sentence").val()
+    };
+    let formData=JSON.stringify(current);
+    console.log(formData+"\n");
+    $.ajax({
+        type: "POST",
+        url: "/api/userspace/dictionary/add",
+        data: formData,
+        success: function(data){
+            if(data.hasOwnProperty("error")){
+                if(data["error"]==true){
+                document.location.href = '/settings/error';
+                }else{
+                    document.location.href = '/view/login';
+                }
+            }else{
+                if(data["status"]==true){
+                    document.location.href = document.location.href;
+                }else{
+                   
+                }
+            }
+        },
+        dataType: "json",
+        contentType : "application/json"
+    });
 }
