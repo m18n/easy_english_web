@@ -438,6 +438,7 @@ async function save_translated(lang_from_translated_id, lang_into_translated_id,
 function add_newsentence(){
     var current = {
         sentence_from:$("#ukr_sentence").val(),
+        sentence_from_context:$("#ukr_sentence_context").val(),
         sentence_into:$("#lang_sentence").val()
     };
     let formData=JSON.stringify(current);

@@ -79,6 +79,9 @@ button:active{
 .sentence_from{
 
 }
+.sentence_from_context{
+    color:rgb(70, 70, 70);
+}
 .sentence_into{
     color:rgb(70, 70, 70);
 }
