@@ -88,7 +88,7 @@ function set_current_lang(element){
     console.log(formData+"\n");
     $.ajax({
         type: "POST",
-        url: "/api/userspace/setcurrentlang",
+        url: "/api/userspace/setCurrentDictionary",
         data: formData,
         success: function(data){
             if(data.hasOwnProperty("error")){

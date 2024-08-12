@@ -54,7 +54,7 @@ function speach(element) {
         text: text
     };
     console.log("REQ:" + JSON.stringify(requestData));
-    fetch('/api/text', {
+    fetch('/api/service/textToAudio', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
