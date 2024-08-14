@@ -1,1 +1,1 @@
-# easy_english_web
+# easy_lang_web
